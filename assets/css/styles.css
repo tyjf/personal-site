@@ -1,0 +1,57 @@
+/* Global styles */
+*{
+	font-family: 'Oxygen Mono', monospace;
+}
+.body{
+	width:100%;
+}
+.header-container {
+   position:fixed;
+   height:10vh;
+   width: 100%;
+   top:0px;
+   left:0px;
+   display: flex;
+   align-items: flex-end; /** vertical alignment; for horizontal, use justify-content**/
+   justify-content: space-between;
+}
+
+.header-title {
+	margin-top:4px; 
+	margin-left:30px;	
+}
+h1{
+	margin-bottom:5px;
+}
+
+.navbar-items{
+	margin-right:auto;	
+	bottom:5px;
+	display: flex;
+	list-style-type: none; /* remove default styling */
+	flex-flow: row wrap;
+}
+.navbar-items li + li:before{
+    content: " ||    ";
+    padding: 0px 10px 0px 10px;
+}
+li a{
+	margin-right:15px;
+}
+
+.about{
+	margin: 0px 50px 10px 0px;
+}
+
+#container {
+	margin:15vh 30px 0px 30px;
+	height: 83%;
+	overflow: auto;
+	/*overflow-y: auto;*/
+}
+
+/* colour and text decoration of all a elements */
+a		{color: #303841; cursor:default;}
+a:hover	{color: #edff00; text-decoration:none;}
+a:link	{text-decoration:none;}
+a:active	{text-decoration:none;}

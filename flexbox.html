@@ -1,0 +1,127 @@
+<!-- https://internetingishard.com/html-and-css/flexbox/ -->
+<style type="text/css">
+
+.menu-container {
+  color: #fff;
+  background-color: #5995DA;  /* Blue */
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  /* border: 1px solid #fff; */
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  /* border: 1px solid #fff;   For debugging */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login {
+  margin-left: 20px;
+}
+.signup {
+  margin-left: auto;
+}
+
+.flex-header-container {
+  color: #5995DA;
+  background-color: #D6E9FE;
+  display: flex;
+  justify-content: center;
+}
+
+.flex-header {
+  width: 900px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photo-grid-container {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-grid {
+  width: 900px;
+  display: flex;
+  justify-content: flex-start;
+  /* flex-wrap: wrap; wrap photo items */
+}
+
+.photo-grid-item {
+  border: 1px solid #fff;
+  width: 300px;
+  height: 300px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-item {
+  border: 1px solid #fff;
+  background-color: #D6E9FE;
+  height: 200px;
+  flex: 1;
+}
+.footer-one,
+.footer-three {
+  background-color: #5995DA;
+  flex: initial;
+  width: 300px;
+}
+
+</style>
+
+
+<div class='menu-container'>
+  <div class='menu'>
+	<div class='date'>Aug 14, 2016</div>
+	<div class='signup'>Sign Up</div>      <!-- This is nested now -->
+	<div class='login'>Login</div>         <!-- This one too! -->
+  </div>
+</div>
+
+<div class='flex-header-container'>
+	<div class='flex-header'>
+		<div class='subscribe'>Subscribe &#9662;</div>
+		<div class='logo'><img src='./assets/img/awesome-logo.svg'/></div>
+		<div class='social'><img src='./assets/img/social-icons.svg'/></div>
+	</div>
+</div>
+
+<div class='photo-grid-container'>
+  <div class='photo-grid'>
+    <div class='photo-grid-item first-item'>
+      <img src='./assets/img/one.svg'/>
+    </div>
+    <div class='photo-grid-item'>
+      <img src='./assets/img/two.svg'/>
+    </div>
+    <div class='photo-grid-item'>
+      <img src='./assets/img/three.svg'/>
+    </div>
+	<div class='photo-grid-item'>
+      <img src='./assets/img/four.svg'/>
+    </div>
+    <div class='photo-grid-item'>
+      <img src='./assets/img/five.svg'/>
+    </div>
+  </div>
+</div>
+
+<div class='footer'>
+  <div class='footer-item footer-one'></div>
+  <div class='footer-item footer-two'></div>
+  <div class='footer-item footer-three'></div>
+</div>
+

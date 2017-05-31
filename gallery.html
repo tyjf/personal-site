@@ -1,0 +1,59 @@
+<style type="text/css">
+#container{ 
+	overflow-y: hidden;
+}
+
+.gallery-container{
+	display:flex;
+	height:75vh;			/* medium 800 on flickr (800 x 534)*/
+	position: relative;
+}
+/**
+.border-left{
+	width:50px;
+	left:0;
+	background: #A94456;
+	position:relative;
+}
+.border-right{
+	width:50px;
+	right:0;
+	background: #A94456;
+	position:relative;
+} **/
+
+.gallery-items-container{
+	height: 70vh;
+    white-space: nowrap;
+	position:relative;
+	display:flex;
+}
+
+.gallery-text{
+	width:20vw;
+	margin-right:50px;
+	white-space: normal;
+}
+h3{
+	margin-top:0px;
+}
+
+.image {
+  display: inline-block;
+  height: 100%;
+  margin-right:20px;
+}
+
+.image img {
+  width: auto;
+  height: 100%;
+}
+
+
+</style>
+
+<div class="gallery-container">
+	<div class=border-left id="left"></div>
+	<div class="gallery-items-container"></div>
+	<div class=border-right id="right"></div>
+</div>
