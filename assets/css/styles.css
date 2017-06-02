@@ -53,9 +53,9 @@ li a{
 }
 
 /* colour and text decoration of all a elements */
-a		{color: #303841; cursor:default; text-decoration: none;}
+a		{color: #303841; cursor:default;}
 a:link	{text-decoration:none;}
 a:active	{text-decoration:none;}
 
 /* custom class for selected value in navbar */
-.link-active {text-decoration: line-through;}
+.link-active {text-decoration: line-through;  text-decoration-color: #4ed3cd;}
