@@ -43,6 +43,7 @@ var NavCollection = Backbone.Collection.extend({
 //------------------------------------------------------
 var NavItemView = Backbone.View.extend({
 	tagName: 'li',
+	className: "navbar-item",
 	events: {
 		'click': 'itemClick'
 	},
@@ -54,11 +55,14 @@ var NavItemView = Backbone.View.extend({
 	render: function() {
 		this.$el.html(this.template(this.model.attributes)); 
 	},
-	template: _.template('<a><%=page_display_name%></a>'),
+	template: _.template('<a id=<%=page_name%> ><%=page_display_name%></a>'),
 	itemClick: function(e){	
 		// route to the correct view
 		var route = this.model.get("page_type") + "/" + this.model.get("page_name");
         this.router.navigate(route, true);
+		// deselect other nav items then set class for the item selected
+		$(".navbar-item > a").removeClass("link-active");
+		$("#"+this.model.get("page_name")).addClass("link-active");
 	}
 });
 

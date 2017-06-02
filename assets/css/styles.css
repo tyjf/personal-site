@@ -37,6 +37,9 @@ h1{
 li a{
 	margin-right:15px;
 }
+.navbar-default .navbar-toggle{
+	border:0px;
+}
 
 .about{
 	margin: 0px 50px 10px 0px;
@@ -50,7 +53,9 @@ li a{
 }
 
 /* colour and text decoration of all a elements */
-a		{color: #303841; cursor:default;}
-a:hover	{color: #edff00; text-decoration:none;}
+a		{color: #303841; cursor:default; text-decoration: none;}
 a:link	{text-decoration:none;}
 a:active	{text-decoration:none;}
+
+/* custom class for selected value in navbar */
+.link-active {text-decoration: line-through;}
