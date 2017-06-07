@@ -12,8 +12,8 @@ var ApplicationRouter = Backbone.Router.extend({
 	// route /home 
 	home: function() {
 		if(App.debug) {console.log("route home");}
-		var galleryModel = new models.Gallery({page_name: "homepage", htmlFile: "./homepage.html"});
-		var galleryView = new views.GalleryView({model: galleryModel, el: $(App.containerEl)});
+		var model = new models.SimplePage({page_name: "homepage", htmlFile: "./homepage.html"});
+		var view = new views.SimpleView({model: model, el: $(App.containerEl)});
 	},
 	
 	// route /gallery/:pagename
@@ -41,6 +41,25 @@ var NavCollection = Backbone.Collection.extend({
 
 // navigation view
 //------------------------------------------------------
+var NavHeaderView = Backbone.View.extend({
+	events: { "click": "itemClick"},
+	initialize: function(){ 
+		_.bindAll(this, 'render');
+		this.render();
+	},
+	render: function() {
+		var self = this;
+		$.getJSON(App.configFile, function(data){
+			$(self.el).append(data.title);
+			self.itemClick();
+		});
+	},
+	itemClick: function(){
+		this.$el.addClass("link-active");
+		$(".navbar-item > a").removeClass("link-active");
+	}
+});
+
 var NavItemView = Backbone.View.extend({
 	tagName: 'li',
 	className: "navbar-item",
@@ -62,6 +81,7 @@ var NavItemView = Backbone.View.extend({
         this.router.navigate(route, true);
 		// deselect other nav items then set class for the item selected
 		$(".navbar-item > a").removeClass("link-active");
+		$(App.navbarHeader).removeClass("link-active");
 		$("#"+this.model.get("page_name")).addClass("link-active");
 	}
 });
@@ -81,6 +101,9 @@ var NavView = Backbone.View.extend({
 	},
 	render: function(){
 		var self = this;
+		// create header
+		new NavHeaderView({el: App.navbarHeader});
+		// create items in the nav bar
 		this.collection.forEach(function(item) {
 			var navItem = new NavItemView( {model: item} );
 			self.el.append(navItem.el);
@@ -96,8 +119,9 @@ var NavView = Backbone.View.extend({
 // define navigation items
 // ----------------------------------------------
 window.App = {
-	debug			: false,
+	debug			: true,
 	containerEl		: "#container",
+	navbarHeader	: ".navbar-brand", 
 	navViewEl		: ".navbar-items",
 	galleryViewEl	: ".gallery-items-container",
 	configFile		: './config.json',

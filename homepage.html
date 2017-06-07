@@ -1,63 +1,44 @@
 
 <style type="text/css">
 
-.grid-container {
-  display: flex;
-  align-items: center;
-}
-
-.gallery-items-container {
-	justify-content:center;
-	width:100%;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.image {
-	border: 1.6px solid #9d9d9d;
-	margin: 10px 40px 20px 0px; 
-	position: relative;
-	height: 296px;				/* small-320 size on flickr (320 x 123) */
-	width: 420px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-}
-
-.image img{
-	display: block;
-	max-width: 100%; 
-	max-height: 100%; 
-	object-fit:contain;
-}
-.image:hover .caption-text {
-	opacity: 1;
-}
-
-
-.caption-text {
-	opacity: 0;
-	position: absolute;
-	width: 100%;
-	color: #fff;
-	left: 0;
-	top: 0;
-	padding: 0.75em 1em;
-	font-weight: 700;
-	z-index: 2;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	background-color: rgba(0,0,0,.2);
-	-webkit-transition: opacity .3s ease-in-out;
-	transition: opacity .3s ease-in-out;
-}
-
-
-
 </style>
 
-<div class='grid-container'>
-  <div class='gallery-items-container'>
-   
-  </div>
+<div id='d3-container' style='width:960px; height:500px;'>
+ 
 </div>
+
+<script>
+
+var svg = d3.select("#d3-container"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    angles = d3.range(0, 2 * Math.PI, Math.PI / 200);
+
+var path = svg.append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .attr("fill", "none")
+    .attr("stroke-width", 10)
+    .attr("stroke-linejoin", "round")
+  .selectAll("path")
+  .data(["cyan", "magenta", "yellow"])
+  .enter().append("path")
+    .attr("stroke", function(d) { return d; })
+    .style("mix-blend-mode", "darken")
+    .datum(function(d, i) {
+      return d3.radialLine()
+          .curve(d3.curveLinearClosed)
+          .angle(function(a) { return a; })
+          .radius(function(a) {
+            var t = d3.now() / 1000;
+            return 200 + Math.cos(a * 8 - i * 2 * Math.PI / 3 + t) * Math.pow((1 + Math.cos(a - t)) / 2, 3) * 32;
+          });
+    });
+
+d3.timer(function() {
+  path.attr("d", function(d) {
+    return d(angles);
+  });
+});
+
+</script>
+
