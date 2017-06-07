@@ -119,7 +119,7 @@ var NavView = Backbone.View.extend({
 // define navigation items
 // ----------------------------------------------
 window.App = {
-	debug			: true,
+	debug			: false,
 	containerEl		: "#container",
 	navbarHeader	: ".navbar-brand", 
 	navViewEl		: ".navbar-items",

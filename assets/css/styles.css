@@ -35,7 +35,7 @@
 	margin-left: 35px;
 	display: flex;
 	list-style-type: none; /* remove default styling */
-	flex-flow: row wrap;
+	/* flex-flow: row wrap; */
 	color: #286090;
 }
 .navbar-items li + li:before{
