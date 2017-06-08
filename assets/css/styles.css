@@ -29,7 +29,7 @@
 .container-fluid a{
 	color: #555;
 }
-
+.navbar-brand{ font-size: 45px; }
 .navbar-items{
 	margin-right:auto;	
 	margin-left: 35px;
@@ -54,8 +54,6 @@ li a{
 	height: 83%;
 	overflow: auto;
 	/*overflow-y: auto;*/
-	 width: 50%;
-  margin: 0 auto;
 }
 
 /* colour and text decoration of all a elements */
