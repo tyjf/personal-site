@@ -1,31 +1,37 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Example</title>
+<!DOCTYPE html>
+<svg width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="assets/css/styles.css" />
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    angles = d3.range(0, 2 * Math.PI, Math.PI / 200);
 
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono" rel="stylesheet">
+var path = svg.append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .attr("fill", "none")
+    .attr("stroke-width", 10)
+    .attr("stroke-linejoin", "round")
+  .selectAll("path")
+  .data(["cyan", "magenta", "yellow"])
+  .enter().append("path")
+    .attr("stroke", function(d) { return d; })
+    .style("mix-blend-mode", "darken")
+    .datum(function(d, i) {
+      return d3.radialLine()
+          .curve(d3.curveLinearClosed)
+          .angle(function(a) { return a; })
+          .radius(function(a) {
+            var t = d3.now() / 1000;
+            return 200 + Math.cos(a * 8 - i * 2 * Math.PI / 3 + t) * Math.pow((1 + Math.cos(a - t)) / 2, 3) * 32;
+          });
+    });
 
+d3.timer(function() {
+  path.attr("d", function(d) {
+    return d(angles);
+  });
+});
 
-</head>
-	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
-	  <a class="navbar-brand" href="#">Navbar</a>
-	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		<div class="navbar-nav">
-		  <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-		  <a class="nav-item nav-link" href="#">Features</a>
-		  <a class="nav-item nav-link" href="#">Pricing</a>
-		  <a class="nav-item nav-link disabled" href="#">Disabled</a>
-		</div>
-	  </div>
-	</nav>
-</html>
+</script>

@@ -3,13 +3,12 @@
 
 </style>
 
-<div id='d3-container' style='width:960px; height:500px;'>
- 
+<svg width="960" height="500"></svg>
 </div>
 
 <script>
 
-var svg = d3.select("#d3-container"),
+var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
     angles = d3.range(0, 2 * Math.PI, Math.PI / 200);
