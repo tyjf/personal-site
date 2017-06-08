@@ -62,9 +62,8 @@ views.GalleryItems = Backbone.View.extend({
 				default:
 					console.log("unrecognised type: " + item.get("type"));
 			}
-			self.el.append(galleryItemView.el);
+			$(galleryItemView.el).appendTo(self.$el).hide().fadeIn(1000);
 		});
-		$("#container").delay(2000).animate({"opacity": "1"}, 700);
 		return this;
 	}
 });

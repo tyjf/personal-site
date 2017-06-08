@@ -8,12 +8,16 @@ var ApplicationRouter = Backbone.Router.extend({
 		"page/:pagename" 	: "loadPage",
 		"gallery/:pagename" : "loadGallery"
 	},
-	
+	formatLink(pagename){
+		$("#navbar a").removeClass("link-active");
+		$("#" + pagename).addClass("link-active");
+	},
 	// route /home 
 	home: function() {
 		if(App.debug) {console.log("route home");}
 		var model = new models.SimplePage({page_name: "homepage", htmlFile: "./homepage.html"});
 		var view = new views.SimpleView({model: model, el: $(App.containerEl)});
+		this.formatLink("home");
 	},
 	
 	// route /gallery/:pagename
@@ -21,12 +25,14 @@ var ApplicationRouter = Backbone.Router.extend({
 		if(App.debug) {console.log("router - loadGallery " + pagename);}
 		var galleryModel = new models.Gallery({page_name: pagename, htmlFile: "./gallery.html"});
 		var galleryView = new views.GalleryView({model: galleryModel, el: $(App.containerEl)});
+		this.formatLink(pagename);
 	},
-	
+	// route /page/:pagename
 	loadPage: function(pagename){
 		if(App.debug) {console.log("route - page "+ pagename);}
 		var simplePageModel = new models.SimplePage({htmlFile: "./"+pagename+".html"});
 		var simpleView = new views.SimpleView({ model:simplePageModel, el: $(App.containerEl)});
+		this.formatLink(pagename);
 	}
 });
 
@@ -42,7 +48,6 @@ var NavCollection = Backbone.Collection.extend({
 // navigation view
 //------------------------------------------------------
 var NavHeaderView = Backbone.View.extend({
-	events: { "click": "itemClick"},
 	initialize: function(){ 
 		_.bindAll(this, 'render');
 		this.render();
@@ -51,12 +56,7 @@ var NavHeaderView = Backbone.View.extend({
 		var self = this;
 		$.getJSON(App.configFile, function(data){
 			$(self.el).append(data.title);
-			self.itemClick();
 		});
-	},
-	itemClick: function(){
-		this.$el.addClass("link-active");
-		$(".navbar-item > a").removeClass("link-active");
 	}
 });
 
@@ -79,10 +79,6 @@ var NavItemView = Backbone.View.extend({
 		// route to the correct view
 		var route = this.model.get("page_type") + "/" + this.model.get("page_name");
         this.router.navigate(route, true);
-		// deselect other nav items then set class for the item selected
-		$(".navbar-item > a").removeClass("link-active");
-		$(App.navbarHeader).removeClass("link-active");
-		$("#"+this.model.get("page_name")).addClass("link-active");
 	}
 });
 
@@ -113,8 +109,11 @@ var NavView = Backbone.View.extend({
 });
 
 // TO DO:
-// page transition
-// nav bar collapse
+// nav link highlight
+// rewrite views for nav link
+// sizing of d3 on homepage
+// nav items wrap
+// delay in retrieving url image
 
 // define navigation items
 // ----------------------------------------------

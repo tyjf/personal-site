@@ -29,7 +29,7 @@
 .container-fluid a{
 	color: #555;
 }
-.navbar-brand{ font-size: 45px; }
+.navbar-brand{ font-size: 40px; }
 .navbar-items{
 	margin-right:auto;	
 	margin-left: 35px;
@@ -45,7 +45,7 @@ li a{
 	margin-right:15px;
 }
 
-.about{
+#about{
 	margin: 0px 30px 10px 0px;
 }
 
@@ -58,9 +58,8 @@ li a{
 
 /* colour and text decoration of all a elements */
 a		{color: #303841; cursor:default;}
-a:link	{}
 a:active	{text-decoration:none;}
-a:hover	{text-decoration: line-through;  text-decoration-color: #4ed3cd;}
+#navbar a:hover	{text-decoration: line-through;  text-decoration-color: #4ed3cd;}
 
 /* custom class for selected value in navbar */
 .link-active {text-decoration: line-through;  text-decoration-color: #4ed3cd;}
