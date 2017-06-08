@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<svg width="960" height="500"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<div id="container" style="width:960px;height:500px;"></div>
 <script>
 
-var svg = d3.select("svg"),
+var svg = d3.select("#container").append("svg:svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
     angles = d3.range(0, 2 * Math.PI, Math.PI / 200);

@@ -54,6 +54,8 @@ li a{
 	height: 83%;
 	overflow: auto;
 	/*overflow-y: auto;*/
+	 width: 50%;
+  margin: 0 auto;
 }
 
 /* colour and text decoration of all a elements */

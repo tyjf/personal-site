@@ -1,16 +1,21 @@
 
 <style type="text/css">
-
+	#d3-frame{
+		height:73vh;
+		width:50vw;
+		overflow:hidden;
+		width: 50%;
+		margin: 0 auto;
+	}
 </style>
 
-<svg width="960" height="500"></svg>
-</div>
+<div id="d3-frame" ></div>
 
 <script>
 
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
+var svg = d3.select("#d3-frame").append("svg:svg").attr('width', "100%").attr('height', "100%"),
+    width = d3.select('#d3-frame').node().clientWidth,
+    height = d3.select('#d3-frame').node().clientHeight,
     angles = d3.range(0, 2 * Math.PI, Math.PI / 200);
 
 var path = svg.append("g")
