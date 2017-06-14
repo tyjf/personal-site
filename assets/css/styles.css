@@ -17,6 +17,7 @@
 }
 
 .navbar-default{
+	margin-top:20px;
 	background-color: #fff;
 	border-color: rgba(251, 250, 250, 0.15);	
 }
@@ -59,7 +60,45 @@ li a{
 /* colour and text decoration of all a elements */
 a		{color: #303841; cursor:default;}
 a:active	{text-decoration:none;}
-#navbar a:hover	{text-decoration: line-through;  text-decoration-color: #4ed3cd;}
+#navbar a:hover	{text-decoration: line-through;  text-decoration-color: #333;}
 
 /* custom class for selected value in navbar */
-.link-active {text-decoration: line-through;  text-decoration-color: #4ed3cd;}
+.link-active {text-decoration: line-through;  text-decoration-color: #333;}
+
+/* override bootstrap navbar collapse size of 991 */
+@media (max-width: 1200px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}

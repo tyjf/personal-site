@@ -10,6 +10,7 @@ var ApplicationRouter = Backbone.Router.extend({
 	},
 	formatLink(pagename){
 		$("#navbar a").removeClass("link-active");
+		$(".navbar-brand").removeClass("link-active"); // remove class on title explicitly
 		$("#" + pagename).addClass("link-active");
 	},
 	// route /home 
