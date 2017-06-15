@@ -63,7 +63,6 @@ var NavHeaderView = Backbone.View.extend({
 
 var NavItemView = Backbone.View.extend({
 	tagName: 'li',
-	className: "navbar-item",
 	events: {
 		'click': 'itemClick'
 	},
@@ -103,15 +102,18 @@ var NavView = Backbone.View.extend({
 		// create items in the nav bar
 		this.collection.forEach(function(item) {
 			var navItem = new NavItemView( {model: item} );
-			self.el.append(navItem.el);
+			if(item.get("position") == "left"){
+				$(App.navItemsLeft).append(navItem.el);
+			} else {
+				$(App.navItemsRight).append(navItem.el);
+			}
 		});
 		return this;
 	}
 });
 
 // TO DO:
-// nav link highlight
-// rewrite views for nav link
+// nav link highlight - sometimes doesnt work on homepage click 
 // sizing of d3 on homepage
 // nav items wrap
 // delay in retrieving url image
@@ -122,13 +124,14 @@ window.App = {
 	debug			: false,
 	containerEl		: "#container",
 	navbarHeader	: ".navbar-brand", 
-	navViewEl		: ".navbar-items",
+	navItemsLeft	: "#navbar-left",
+	navItemsRight	: "#navbar-right",
 	galleryViewEl	: ".gallery-items-container",
 	configFile		: './config.json',
 	nav : function(){
 		$.getJSON(App.configFile, function(data){
 			var collection = new NavCollection(data.navigation);
-			new NavView({collection:collection, el:$(App.navViewEl)});
+			new NavView({collection:collection});
 		});
 	}
 };
