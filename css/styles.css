@@ -62,8 +62,8 @@ li a{
 }
 
 /* colour and text decoration of all a elements */
-a		{color: #303841; cursor:default;}
-a:active	{text-decoration:none;}
+#navbar a			{color: #303841; cursor:default; font-size:20px;}
+#navbar a:active	{text-decoration:none;}
 #navbar a:hover	{text-decoration: line-through;  text-decoration-color: #333;}
 
 /* custom class for selected value in navbar */

@@ -16,7 +16,7 @@ var ApplicationRouter = Backbone.Router.extend({
 	// route /home 
 	home: function() {
 		if(App.debug) {console.log("route home");}
-		var model = new models.SimplePage({page_name: "homepage", htmlFile: "./homepage.html"});
+		var model = new models.SimplePage({page_name: "homepage", htmlFile: "./pages/homepage.html"});
 		var view = new views.SimpleView({model: model, el: $(App.containerEl)});
 		this.formatLink("home");
 	},
@@ -24,14 +24,14 @@ var ApplicationRouter = Backbone.Router.extend({
 	// route /gallery/:pagename
 	loadGallery : function(pagename){
 		if(App.debug) {console.log("router - loadGallery " + pagename);}
-		var galleryModel = new models.Gallery({page_name: pagename, htmlFile: "./gallery.html"});
+		var galleryModel = new models.Gallery({page_name: pagename, htmlFile: "./pages/gallery.html"});
 		var galleryView = new views.GalleryView({model: galleryModel, el: $(App.containerEl)});
 		this.formatLink(pagename);
 	},
 	// route /page/:pagename
 	loadPage: function(pagename){
 		if(App.debug) {console.log("route - page "+ pagename);}
-		var simplePageModel = new models.SimplePage({htmlFile: "./"+pagename+".html"});
+		var simplePageModel = new models.SimplePage({htmlFile: "./pages/"+pagename+".html"});
 		var simpleView = new views.SimpleView({ model:simplePageModel, el: $(App.containerEl)});
 		this.formatLink(pagename);
 	}
