@@ -24,10 +24,11 @@ var ApplicationRouter = Backbone.Router.extend({
 	// route /gallery/:pagename
 	loadGallery : function(pagename){
 		if(App.debug) {console.log("router - loadGallery " + pagename);}
-		var galleryModel = new models.Gallery({page_name: pagename, htmlFile: "./pages/gallery.html"});
+		var galleryModel = new models.SlideShowGallery();
 		var galleryView = new views.GalleryView({model: galleryModel, el: $(App.containerEl)});
 		this.formatLink(pagename);
 	},
+
 	// route /page/:pagename
 	loadPage: function(pagename){
 		if(App.debug) {console.log("route - page "+ pagename);}

@@ -12,31 +12,13 @@
 			"page_display_name": "Theme 2"
 		},
 		{	
-			"page_name": "flexbox", 
+			"page_name": "slideshow-gallery", 
 			"page_type": "page", 
-			"page_display_name": "Flexbox Example" 
-		} 
+			"page_display_name": "slideshow-test"
+		}
 	],
 	"pages"		: {
 		"homepage"	:[
-			{
-				"type": "image-with-link",
-				"url": "https://placehold.it/320x213",
-				"link": "#gallery/theme-1",
-				"text": "text 1"
-			},
-			{
-				"type": "image-with-link",
-				"url": "https://placehold.it/320x213",
-				"link": "#gallery/theme-2",
-				"text": "text 2"
-			},
-			{
-				"type": "image-with-link",
-				"url": "https://placehold.it/320x213",
-				"link": "#gallery/theme-3",
-				"text": "text 3"
-			}
 		],
 		"theme-1"	:[
 			{
